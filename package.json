@@ -10,16 +10,38 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "prettier": "^1.19.1"
+    "eslint-plugin-react": "^7.18.3",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.19.1",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": [
+    "precommit",
+    "precommit-msg"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma=all --write",
+      "eslint",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthewkturner/next-template.git"
   },
-  "author": "",
+  "author": "Matthew K. Turner",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/matthewkturner/next-template/issues"
